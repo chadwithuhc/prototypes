@@ -1,0 +1,58 @@
+@import "https://fonts.googleapis.com/css?family=Roboto+Condensed";
+.task-list--tomorrow {
+  opacity: 0.5;
+}
+
+.task-list--tomorrow .task-list__title {
+  font-size: 1em;
+}
+
+.task-list--tomorrow .task-list__item {
+  cursor: help;
+}
+
+.task-list__title {
+  margin: 0.5em;
+  padding-bottom: 0.5em;
+  border-bottom: solid 0.1em black;
+}
+
+.task-list__list:hover .task-list__item {
+  opacity: 0.7;
+}
+
+.task-list__item {
+  display: block;
+  text-decoration: none;
+  color: black;
+  padding: 0.2em;
+  margin: 0.2em 0;
+  border: solid 1px transparent;
+  border-radius: 0.1em;
+}
+
+.task-list__item:hover {
+  border-color: lightgrey;
+  opacity: 1 !important;
+}
+
+.task-list-group--columns {
+  display: flex;
+}
+
+.task-list-group--columns .task-list {
+  min-width: 10em;
+  padding-bottom: 1em;
+}
+
+.task-list-group--columns .task-list--tomorrow {
+  margin-left: 2em;
+  padding: 0.9em 1em;
+  border: double 3px #aaa;
+  border-radius: 1em;
+}
+
+body {
+  font-family: "Roboto Condensed", sans-serif;
+  font-weight: 300;
+}

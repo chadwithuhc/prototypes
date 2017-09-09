@@ -1,0 +1,20 @@
+.task-list-group {
+  
+  
+  &--columns {
+    display: flex;
+    
+    .task-list {
+      min-width: 10em;
+      padding-bottom: 1em;
+      
+      &--tomorrow {
+        margin-left: 2em;
+        padding: 0.9em 1em;
+        border: double 3px #aaa;
+        border-radius: 1em;
+      }
+    }
+  }
+  
+}
