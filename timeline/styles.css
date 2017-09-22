@@ -11,7 +11,7 @@
 
 .timeline-item {
   position: relative;
-  margin-bottom: 1em; }
+  margin-bottom: 3em; }
   .timeline-item__time {
     position: absolute;
     top: 0;
@@ -29,7 +29,8 @@
       right: -1.5em;
       text-align: center;
       line-height: 1.2em;
-      font-family: 'Verdana'; }
+      font-family: 'Verdana';
+      background: white; }
   .timeline-item__content {
     padding-left: 6em; }
   .timeline-item__tag {
@@ -41,17 +42,22 @@
     text-decoration: none; }
   .timeline-item__location {
     font-size: 0.5em;
-    text-transform: uppercase; }
+    text-transform: uppercase;
+    padding-top: 0.5em; }
   .timeline-item--add .timeline-item__time:before {
     content: '+';
     line-height: 1em;
-    border: solid 1px #aaa;
-    background: white;
+    border: dotted 1px #aaa;
     right: -1.6em; }
   .timeline-item--mood-happy .timeline-item__time:before {
     content: '🙂'; }
   .timeline-item--mood-whatever .timeline-item__time:before {
     content: '🙃'; }
+
+.link-list__item {
+  display: inline-block;
+  font-size: 0.8em;
+  color: #333; }
 
 body {
   font-family: "Roboto Condensed", sans-serif;

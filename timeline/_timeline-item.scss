@@ -2,7 +2,7 @@ $bg-color: tomato;
 
 .timeline-item {
   position: relative; // for &__time
-  margin-bottom: 1em;
+  margin-bottom: 3em;
 
   &__time {
     position: absolute; // for &:before circle
@@ -20,6 +20,7 @@ $bg-color: tomato;
       text-align: center;
       line-height: 1.2em;
       font-family: 'Verdana';
+      background: white;
     }
   }
 
@@ -39,6 +40,7 @@ $bg-color: tomato;
   &__location {
     font-size: 0.5em;
     text-transform: uppercase;
+    padding-top: 0.5em;
   }
 
 
@@ -50,8 +52,7 @@ $bg-color: tomato;
         &:before {
           content: '+';
           line-height: 1em;
-          border: solid 1px #aaa;
-          background: white;
+          border: dotted 1px #aaa;
           right: -1.6em;
         }
       }
