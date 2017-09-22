@@ -1,16 +1,16 @@
 {
-  "name": "prototypes",
+  "name": "timeline",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "http-server ."
+    "watch": "node-sass --watch . -o ."
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "dependencies": {
-    "http-server": "^0.10.0"
+  "devDependencies": {
+    "node-sass": "^4.5.3"
   }
 }

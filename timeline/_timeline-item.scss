@@ -1,0 +1,86 @@
+$bg-color: tomato;
+
+.timeline-item {
+  position: relative; // for &__time
+  margin-bottom: 1em;
+
+  &__time {
+    position: absolute; // for &:before circle
+    top: 0; left: 0;
+    width: 3.6em;
+    text-align: right;
+
+    &:before {
+      content: '';
+      display: block;
+      border-radius: 100%;
+      width: 1.2em; height: 1.2em;
+      position: absolute;
+      top: 0; right: -1.5em;
+      text-align: center;
+      line-height: 1.2em;
+      font-family: 'Verdana';
+    }
+  }
+
+  &__content {
+    padding-left: 6em;
+  }
+
+  &__tag {
+    background: $bg-color;
+    border-radius: 2px;
+    display: inline-block;
+    padding: 0.2em 0.5em;
+    color: white;
+    text-decoration: none;
+  }
+
+  &__location {
+    font-size: 0.5em;
+    text-transform: uppercase;
+  }
+
+
+
+  &--add {
+    .timeline-item {
+
+      &__time {
+        &:before {
+          content: '+';
+          line-height: 1em;
+          border: solid 1px #aaa;
+          background: white;
+          right: -1.6em;
+        }
+      }
+
+    }
+  }
+
+
+  &--mood-happy {
+    .timeline-item {
+
+      &__time {
+        &:before {
+          content: '🙂';
+        }
+      }
+
+    }
+  }
+
+  &--mood-whatever {
+    .timeline-item {
+
+      &__time {
+        &:before {
+          content: '🙃';
+        }
+      }
+
+    }
+  }
+}
