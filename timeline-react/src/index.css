@@ -1,0 +1,65 @@
+@charset "UTF-8";
+@import 'https://fonts.googleapis.com/css?family=Roboto+Condensed';
+.timeline:before {
+  content: '';
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 5em;
+  border-left: solid 1px #333;
+  height: 100%; }
+
+.timeline-item {
+  position: relative;
+  margin-bottom: 3em; }
+  .timeline-item__time {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 3.6em;
+    text-align: right; }
+    .timeline-item__time:before {
+      content: '';
+      display: block;
+      border-radius: 100%;
+      width: 1.2em;
+      height: 1.2em;
+      position: absolute;
+      top: 0;
+      right: -1.5em;
+      text-align: center;
+      line-height: 1.2em;
+      font-family: 'Verdana';
+      background: white; }
+  .timeline-item__content {
+    padding-left: 6em; }
+  .timeline-item__tag {
+    background: tomato;
+    border-radius: 2px;
+    display: inline-block;
+    margin: 0 0.2em 0 0;
+    padding: 0.2em 0.5em;
+    color: white;
+    text-decoration: none; }
+  .timeline-item__location {
+    font-size: 0.5em;
+    text-transform: uppercase;
+    padding-top: 0.5em; }
+  .timeline-item--add .timeline-item__time:before {
+    content: '+';
+    line-height: 1em;
+    border: dotted 1px #aaa;
+    right: -1.6em; }
+  .timeline-item--mood-happy .timeline-item__time:before {
+    content: '🙂'; }
+  .timeline-item--mood-whatever .timeline-item__time:before {
+    content: '🙃'; }
+
+.link-list__item {
+  display: inline-block;
+  font-size: 0.8em;
+  color: #333; }
+
+body {
+  font-family: "Roboto Condensed", sans-serif;
+  font-weight: 300; }

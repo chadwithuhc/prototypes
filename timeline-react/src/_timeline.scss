@@ -1,0 +1,14 @@
+$timeline-line-left: 5em;
+
+.timeline {
+
+  &:before {
+    content: '';
+    display: block;
+    position: absolute;
+    top: 0;
+    left: $timeline-line-left;
+    border-left: solid 1px #333;
+    height: 100%;
+  }
+}
