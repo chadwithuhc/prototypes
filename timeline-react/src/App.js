@@ -35,6 +35,9 @@ class App extends Component {
       if (action === `afterDestroy`) {
         store.getCollection(name).remove(data)
       }
+      if (action === `afterCreate`) {
+        store.getCollection(name).add(data)
+      }
 
       console.log(action, name, data)
       console.log(store.getAll(name))
@@ -49,6 +52,11 @@ class App extends Component {
     Entry.destroy(entry.id)
   }
 
+  onSave(e) {
+    e.preventDefault()
+    Entry.create(DATA.entries[0])
+  }
+
   render() {
     return (
       <section className="timeline">
@@ -57,7 +65,8 @@ class App extends Component {
           <section className="timeline-item__content">
             <a href="" className="link-list__item" data-location>Add Location</a><br/>
             <a href="" className="link-list__item">Add Tags</a><br/>
-            <a href="" className="link-list__item">Add Description</a>
+            <a href="" className="link-list__item">Add Description</a><br/>
+            <a href="" className="link-list__item" onClick={this.onSave}>SAVE</a>
           </section>
         </article>
 
