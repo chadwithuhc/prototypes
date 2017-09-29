@@ -54,6 +54,8 @@
     content: '🙂'; }
   .timeline-item--mood-whatever .timeline-item__time:before {
     content: '🙃'; }
+  .timeline-item--mood-tired .timeline-item__time:before {
+    content: '😴'; }
 
 .link-list__item {
   display: inline-block;

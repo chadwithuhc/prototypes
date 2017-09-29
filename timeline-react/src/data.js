@@ -14,7 +14,6 @@ export default {
 
   entries: [
     {
-      id: 1,
       time: '11:50a',
       mood: 'happy',
       location: 'Glenwood Springs, CO',
@@ -25,7 +24,6 @@ export default {
       description: `I took a magical trip to Glennwood Springs in record breaking time. Had some good lunch and now on my way to foobar!`
     },
     {
-      id: 2,
       time: '10:45a',
       mood: 'whatever',
       location: '2001 Blake St',
@@ -34,6 +32,16 @@ export default {
         'Waffles'
       ],
       description: ``
+    },
+    {
+      time: '8:44a',
+      mood: 'tired',
+      location: 'Home',
+      tags: [
+        'Exercise',
+        'Pull Ups'
+      ],
+      description: `A few reps bruh`
     }
   ]
 

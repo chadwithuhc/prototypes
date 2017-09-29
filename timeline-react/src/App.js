@@ -3,34 +3,44 @@ import DATA from './data'
 import store from './data/store'
 import Entry from './data/entry'
 
+// DEBUG: Seeding
+const SEED = false
+
 class App extends Component {
   constructor(props) {
     super(props)
     this.state = {
       entries: []
     }
+
     this.loadData()
   }
 
   async loadData() {
-    // await Entry.create({
-    //   time: '4:20a',
-    //   tags: ['foobar']
-    // })
+    // Seed data
+    if (SEED) {
+      await DATA.entries.map(entry => {
+        return Entry.create(entry)
+      })
+    }
+
     this.setState({
       entries: await store.findAll(Entry.name)
     })
   }
 
   componentDidMount() {
-    Entry.on('all', (action, name, data) => {
+    store.on('all', (action, name, data) => {
+
+      if (action === `afterDestroy`) {
+        store.getCollection(name).remove(data)
+      }
+
       console.log(action, name, data)
-      console.log(Entry)
-      console.log(this.state.entries)
-      console.log(store.getAll(Entry.name))
-      // this.setState({
-      //   entries: store.getAll(Entry.name)
-      // })
+      console.log(store.getAll(name))
+      this.setState({
+        entries: store.getAll(name)
+      })
     })
   }
 

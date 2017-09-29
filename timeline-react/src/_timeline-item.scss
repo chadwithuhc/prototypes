@@ -85,4 +85,16 @@ $bg-color: tomato;
 
     }
   }
+
+  &--mood-tired {
+    .timeline-item {
+
+      &__time {
+        &:before {
+          content: '😴';
+        }
+      }
+
+    }
+  }
 }
