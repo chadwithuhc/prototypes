@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import DATA from './data'
 import store from './data/store'
 import Entry from './data/entry'
+import MoodPicker from './MoodPicker'
 
 // DEBUG: Seeding
 const SEED = false
@@ -57,24 +58,30 @@ class App extends Component {
     Entry.create(DATA.entries[0])
   }
 
+  chooseMood(mood) {
+    console.log(mood)
+  }
+
   render() {
     return (
       <section className="timeline">
         <article className="timeline-item timeline-item--add">
           <time className="timeline-item__time">Now</time>
           <section className="timeline-item__content">
+            <MoodPicker onClick={this.chooseMood}></MoodPicker>
             <a href="" className="link-list__item" data-location>Add Location</a><br/>
             <a href="" className="link-list__item">Add Tags</a><br/>
             <a href="" className="link-list__item">Add Description</a><br/>
+            <textarea ref="description"></textarea>
             <a href="" className="link-list__item" onClick={this.onSave}>SAVE</a>
           </section>
         </article>
 
         {this.state.entries.map((entry) => {
           return (
-            <article key={entry.id} className={`timeline-item timeline-item--mood-${entry.mood}`}>
+            <article key={entry.id} className="timeline-item">
 
-              <time className="timeline-item__time">{entry.time}</time>
+              <time className={`timeline-item__time mood--${entry.mood}`}>{entry.time}</time>
               <section className="timeline-item__content">
                 <p className="timeline-item__location">{entry.location}</p>
                 <a href="" className="timeline-item__tag" onClick={(e) => this.delete(e, entry)}>X</a>

@@ -11,7 +11,7 @@ $bg-color: tomato;
     text-align: right;
 
     &:before { // Mood Element
-      content: '';
+      // content: '';
       display: block;
       border-radius: 100%;
       width: 1.2em; height: 1.2em;
@@ -55,43 +55,6 @@ $bg-color: tomato;
           line-height: 1em;
           border: dotted 1px #aaa;
           right: -1.6em;
-        }
-      }
-
-    }
-  }
-
-
-  &--mood-happy {
-    .timeline-item {
-
-      &__time {
-        &:before {
-          content: '🙂';
-        }
-      }
-
-    }
-  }
-
-  &--mood-whatever {
-    .timeline-item {
-
-      &__time {
-        &:before {
-          content: '🙃';
-        }
-      }
-
-    }
-  }
-
-  &--mood-tired {
-    .timeline-item {
-
-      &__time {
-        &:before {
-          content: '😴';
         }
       }
 

@@ -1,0 +1,34 @@
+$mood-happy: 🙂;
+$mood-sad: 😔;
+$mood-whatever: 🙃;
+$mood-tired: 😴;
+
+.mood {
+
+  &-grid [class^="mood--"] {
+    display: inline-block;
+    text-decoration: none;
+    padding: 3px;
+
+    .mood__label {
+      display: none;
+    }
+  }
+
+  &--happy:before {
+    content: '#{$mood-happy}';
+  }
+
+  &--sad:before {
+    content: '#{$mood-sad}';
+  }
+
+  &--whatever:before {
+    content: '#{$mood-whatever}';
+  }
+
+  &--tired:before {
+    content: '#{$mood-tired}';
+  }
+
+}
