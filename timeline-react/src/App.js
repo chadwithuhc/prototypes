@@ -3,6 +3,7 @@ import DATA from './data'
 import store from './data/store'
 import Entry from './data/entry'
 import MoodPicker from './MoodPicker'
+import TagInput from './TagInput'
 
 // DEBUG: Seeding
 const SEED = false
@@ -11,7 +12,8 @@ class App extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      entries: []
+      entries: [],
+      newEntry: {}
     }
 
     this.loadData()
@@ -53,13 +55,41 @@ class App extends Component {
     Entry.destroy(entry.id)
   }
 
-  onSave(e) {
+  onSave = (e) => {
     e.preventDefault()
-    Entry.create(DATA.entries[0])
+
+    Entry.create({
+      ...this.state.newEntry,
+      description: this.refs.description.value
+    }).then(newEntry => {
+      this.setState({
+        newEntry: {
+          mood: '',
+          tags: [],
+          tagsRaw: '',
+          description: ''
+        }
+      })
+    })
   }
 
-  chooseMood(mood) {
-    console.log(mood)
+  chooseMood = (mood) => {
+    this.setState({
+      newEntry: {
+        ...this.state.newEntry,
+        mood
+      }
+    })
+  }
+
+  setTags = (tags, tagsRaw) => {
+    this.setState({
+      newEntry: {
+        ...this.state.newEntry,
+        tags,
+        tagsRaw
+      }
+    })
   }
 
   render() {
@@ -68,11 +98,13 @@ class App extends Component {
         <article className="timeline-item timeline-item--add">
           <time className="timeline-item__time">Now</time>
           <section className="timeline-item__content">
-            <MoodPicker onClick={this.chooseMood}></MoodPicker>
-            <a href="" className="link-list__item" data-location>Add Location</a><br/>
-            <a href="" className="link-list__item">Add Tags</a><br/>
-            <a href="" className="link-list__item">Add Description</a><br/>
-            <textarea ref="description"></textarea>
+            <MoodPicker onClick={this.chooseMood} value={this.state.newEntry.mood}></MoodPicker>
+            {/* <a href="" className="link-list__item" data-location>Add Location</a><br/> */}
+            <TagInput onChange={this.setTags} value={this.state.newEntry.tags} valueRaw={this.state.newEntry.tagsRaw}></TagInput>
+            <section>
+              <h2 className="section-title">Description</h2>
+              <textarea ref="description" className="full-input" value={this.state.newEntry.description}></textarea>
+            </section>
             <a href="" className="link-list__item" onClick={this.onSave}>SAVE</a>
           </section>
         </article>
