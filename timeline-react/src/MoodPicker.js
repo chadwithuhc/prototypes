@@ -15,7 +15,7 @@ class MoodPicker extends React.Component {
     return (
       <section className="mood-grid">
         <h2 className="section-title">Mood</h2>
-        {moods.map(mood => {
+        {moods.all.map(mood => {
           return <a key={mood.name} href="" className="mood-link" onClick={(e) => this.onClick(e, mood)}>
             <MoodIcon mood={mood} />
           </a>

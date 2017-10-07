@@ -1,0 +1,15 @@
+.button {
+
+  &--submit {
+    display: flex;
+    background: none;
+    border: solid 1px lightseagreen;
+    border-radius: 0.2em;
+    color: lightseagreen;
+    padding: 0.5em 1em;
+    margin: 1em 0 1em auto;
+    cursor: pointer;
+    font-family: 'Roboto Condensed', sans-serif;
+  }
+
+}

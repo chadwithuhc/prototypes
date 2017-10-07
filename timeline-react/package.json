@@ -6,6 +6,7 @@
     "js-data": "^3.0.1",
     "js-data-firebase": "^3.0.0",
     "js-data-localstorage": "^3.0.0-beta.2",
+    "moment": "^2.18.1",
     "node-sass-chokidar": "0.0.3",
     "react": "^15.6.1",
     "react-dom": "^15.6.1",

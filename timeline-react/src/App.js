@@ -5,6 +5,8 @@ import Entry from './data/entry'
 import MoodPicker from './MoodPicker'
 import MoodIcon from './MoodIcon'
 import TagInput from './TagInput'
+import moment from 'moment'
+import moods from './data/static/moods'
 
 // DEBUG: Seeding
 const SEED = false
@@ -14,7 +16,9 @@ class App extends Component {
     super(props)
     this.state = {
       entries: [],
-      newEntry: {}
+      newEntry: {
+        mood: moods.default
+      }
     }
 
     this.loadData()
@@ -28,9 +32,7 @@ class App extends Component {
       })
     }
 
-    this.setState({
-      entries: await store.findAll(Entry.name, { orderBy: `created` })
-    })
+    await store.findAll(Entry.name)
   }
 
   componentDidMount() {
@@ -46,7 +48,7 @@ class App extends Component {
       console.log(action, name, data)
       console.log(store.getAll(name))
       this.setState({
-        entries: store.getAll(name)
+        entries: store.filter(name, { orderBy: [[`timestamp`, `DESC`]] })
       })
     })
   }
@@ -64,11 +66,12 @@ class App extends Component {
     Entry.create({
       ...this.state.newEntry,
       mood: this.state.newEntry.mood.name,
-      description: this.refs.description.value
+      description: this.refs.description.value,
+      timestamp: moment().valueOf()
     }).then(newEntry => {
       this.setState({
         newEntry: {
-          mood: '',
+          mood: moods.default,
           tags: [],
           tagsRaw: '',
           description: ''
@@ -96,13 +99,17 @@ class App extends Component {
     })
   }
 
+  getTime = ({ timestamp }) => {
+    return moment(timestamp, 'x').calendar().replace(` at `, `\n`)
+  }
+
   render() {
     return (
       <section className="timeline">
         <article className="timeline-item timeline-item--add">
           <time className="timeline-item__time">Now</time>
           <a className="timeline-item__mood">
-            <MoodIcon mood={this.state.newEntry.mood} defaultIcon={`❔`} />
+            <MoodIcon mood={this.state.newEntry.mood} />
           </a>
           <section className="timeline-item__content">
             <MoodPicker onClick={this.chooseMood} value={this.state.newEntry.mood}></MoodPicker>
@@ -112,7 +119,7 @@ class App extends Component {
               <h2 className="section-title">Description</h2>
               <textarea ref="description" className="full-input" value={this.state.newEntry.description}></textarea>
             </section>
-            <a href="" className="link-list__item" onClick={this.onSave}>SAVE</a>
+            <button className="button button--submit" onClick={this.onSave}>SAVE</button>
           </section>
         </article>
 
@@ -120,7 +127,7 @@ class App extends Component {
           return (
             <article key={entry.id} className="timeline-item">
 
-              <time className="timeline-item__time">{entry.time}</time>
+              <time className="timeline-item__time">{this.getTime(entry)}</time>
               <a className="timeline-item__mood">
                 <MoodIcon name={entry.mood} />
               </a>

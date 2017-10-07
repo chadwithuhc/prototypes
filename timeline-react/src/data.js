@@ -1,3 +1,5 @@
+import moment from 'moment'
+
 export default {
 
   locations: [
@@ -14,7 +16,7 @@ export default {
 
   entries: [
     {
-      time: '11:50a',
+      timestamp: moment().subtract(24, 'h').valueOf(),
       mood: 'happy',
       location: 'Glenwood Springs, CO',
       tags: [
@@ -24,7 +26,7 @@ export default {
       description: `I took a magical trip to Glennwood Springs in record breaking time. Had some good lunch and now on my way to foobar!`
     },
     {
-      time: '10:45a',
+      timestamp: moment().subtract(28, 'h').valueOf(),
       mood: 'whatever',
       location: '2001 Blake St',
       tags: [
@@ -34,7 +36,7 @@ export default {
       description: ``
     },
     {
-      time: '8:44a',
+      timestamp: moment().subtract(30, 'h').valueOf(),
       mood: 'tired',
       location: 'Home',
       tags: [
