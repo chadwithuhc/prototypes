@@ -1,9 +1,8 @@
-$mood-happy: 🙂;
-$mood-sad: 😔;
-$mood-whatever: 🙃;
-$mood-tired: 😴;
-
 .mood {
+
+  .mood__label {
+    display: none;
+  }
 
   &-grid [class^="mood--"] {
     display: inline-block;
@@ -15,20 +14,17 @@ $mood-tired: 😴;
     }
   }
 
-  &--happy:before {
-    content: '#{$mood-happy}';
-  }
+  &-link {
+    text-decoration: none;
 
-  &--sad:before {
-    content: '#{$mood-sad}';
-  }
+    .mood {
+      display: inline-block;
+      text-decoration: none;
+      padding: 3px;
 
-  &--whatever:before {
-    content: '#{$mood-whatever}';
+      .mood__label {
+        display: none;
+      }
+    }
   }
-
-  &--tired:before {
-    content: '#{$mood-tired}';
-  }
-
 }

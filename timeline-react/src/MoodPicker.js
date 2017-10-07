@@ -1,8 +1,6 @@
 import React from 'react'
-
-const moods = [
-  'happy', 'sad', 'whatever', 'tired'
-]
+import moods from './data/static/moods'
+import MoodIcon from './MoodIcon'
 
 class MoodPicker extends React.Component {
 
@@ -18,7 +16,9 @@ class MoodPicker extends React.Component {
       <section className="mood-grid">
         <h2 className="section-title">Mood</h2>
         {moods.map(mood => {
-          return <a key={mood} href="" className={`mood--${mood}`} onClick={(e) => this.onClick(e, mood)}><span className="mood__label">{mood}</span></a>
+          return <a key={mood.name} href="" className="mood-link" onClick={(e) => this.onClick(e, mood)}>
+            <MoodIcon mood={mood} />
+          </a>
         })}
       </section>
     )
