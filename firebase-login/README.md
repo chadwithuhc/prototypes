@@ -63,3 +63,21 @@ export default store.defineMapper('modelname')
 - Go to `Develop > Database`
 - switch to `Rules` tab
 - update permissions
+
+### Add authentication
+- Enable Google auth in firebase
+- Add firebase UI https://github.com/firebase/FirebaseUI-Web#installation
+- Update firebase database rules
+```
+{
+  "rules": {
+    ".read": "false || auth != null",
+    ".write": "false || auth != null",
+    "entry": {
+      ".read": "auth != null",
+      ".write": "auth != null"
+    }
+  }
+}
+```
+- TRY https://stackoverflow.com/questions/30910704/how-do-i-link-each-user-to-their-data-in-firebase
