@@ -28,6 +28,11 @@ class PhotoSource {
     return `https://farm${photo.farm}.staticflickr.com/${photo.server}/${photo.id}_${photo.secret}_${options}.jpg`
   }
 
+  getLocation(photo) {
+    // 
+    return photo.title
+  }
+
 }
 
 export default new PhotoSource(process.env.REACT_APP_API_KEY)
