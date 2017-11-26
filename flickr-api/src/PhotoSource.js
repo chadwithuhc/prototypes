@@ -29,8 +29,73 @@ class PhotoSource {
   }
 
   getLocation(photo) {
-    // 
-    return photo.title
+    // [topic] at [location] in [city, state]
+    // Campfires in Rocky Mountain National Park, CO
+    // Colorado Rockies at Coors Field in Denver, CO
+    // Dillon Reservoir in Frisco, CO
+    // Breckenridge, CO
+
+    const photoDetails = {}
+    const step1 = photo.title.split(' at ')
+    // console.log(step1)
+    let step2
+
+    // We have a [topic] match
+    if (step1.length > 1) {
+      photoDetails.topic = step1[0]
+      step2 = step1[1]
+    }
+    else {
+      step2 = step1[0]
+    }
+
+    const step3 = step2.split(' in ')
+    let step4
+
+    console.log(step3)
+    if (step3.length > 1) {
+      photoDetails.location = step3[0]
+      step4 = step3[1]
+    }
+    else {
+      if (step3.length === 1 && step3[0] === ``) {
+        photoDetails.city_state = step2
+        step4 = null
+      }
+      else {
+        step4 = step3[0]
+      }
+    }
+
+
+    if (step4 !== null) {
+      photoDetails.city_state = step4
+    }
+
+
+    return photoDetails
+  }
+
+  getLocations(photos) {
+    return photos.map(this.getLocation)
+  }
+
+  getLocationsByProp(photos) {
+    return photos.reduce((locationsByProp, photo) => {
+      const photoDetails = this.getLocation(photo)
+
+      if (photoDetails.topic) {
+        locationsByProp.topics.push(photoDetails)
+      }
+      if (photoDetails.location) {
+        locationsByProp.locations.push(photoDetails)
+      }
+
+      locationsByProp.city_state.push(photoDetails)
+      locationsByProp.all.push(photoDetails)
+
+      return locationsByProp
+    }, { topics: [], locations: [], city_state: [], all: [] })
   }
 
 }

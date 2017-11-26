@@ -11,23 +11,31 @@ class App extends Component {
     this.state = {
       photosets: [],
       photos: [],
-      locations: []
+      locations: [],
+      locationsByProp: {
+        topics: [],
+        locations: [],
+        city_state: []
+      }
     }
   }
 
   componentDidMount() {
     PhotoSource.getPhotosets().then(photosets => {
-      console.log(photosets)
+      // console.log(photosets)
       this.setState({
         photosets
       })
 
       PhotoSource.getPhotosFromPhotoset(`72157682668038663`).then(photoset => {
-        console.log(photoset.photo)
+        // console.log(photoset.photo)
+        const photos = photoset.photo
+        const locations = PhotoSource.getLocations(photos)
 
         this.setState({
-          photos: photoset.photo.map(photo => PhotoSource.getPhotoUrl(photo)),
-          locations: photoset.photo.map(photo => PhotoSource.getLocation(photo)),
+          photos: photos.map(photo => PhotoSource.getPhotoUrl(photo)),
+          locations,
+          locationsByProp: PhotoSource.getLocationsByProp(photos)
         })
 
       })
@@ -35,13 +43,21 @@ class App extends Component {
   }
 
   render() {
+    console.log(`Photos: ${this.state.photos.length}`, `Locations: ${this.state.locations.length}`)
+
     return (
       <div className="App">
         {this.state.photosets.map(photoset => {
           return <p key={photoset.id}>{photoset.title._content}: {photoset.id}</p>
         })}
+        <h2>
+          Topics: {this.state.locationsByProp.topics.length} |
+          Locations: {this.state.locationsByProp.locations.length} |
+          Cities: {this.state.locationsByProp.city_state.length} |
+          All: {this.state.locations.length}
+        </h2>
         {this.state.locations.map(location => {
-          return <h2>{location}</h2>
+          return <h2>{location.city_state}</h2>
         })}
         {this.state.photos.map(photo => {
           return <img key={photo} src={photo} />
