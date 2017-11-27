@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
 
 import PhotoSource from './PhotoSource'
@@ -56,10 +55,10 @@ class App extends Component {
           Cities: {this.state.locationsByProp.city_state.length} |
           All: {this.state.locations.length}
         </h2>
-        {this.state.locations.map(location => {
-          return <h2>{location.city_state}</h2>
+        {this.state.locationsByProp.city_state.map(location => {
+          return <h2 key={location[0].city_state}>{location[0].city_state}</h2>
         })}
-        {this.state.photos.map(photo => {
+        {this.state.photos.reverse().map(photo => {
           return <img key={photo} src={photo} />
         })}
       </div>

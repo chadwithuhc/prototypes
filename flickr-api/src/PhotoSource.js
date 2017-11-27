@@ -23,7 +23,7 @@ class PhotoSource {
   }
 
   getPhotoUrl(photo, options = 'q') {
-    console.log('photo', photo)
+    // console.log('photo', photo)
     // https://farm{farm-id}.staticflickr.com/{server-id}/{id}_{secret}_[mstzb].jpg
     return `https://farm${photo.farm}.staticflickr.com/${photo.server}/${photo.id}_${photo.secret}_${options}.jpg`
   }
@@ -52,7 +52,7 @@ class PhotoSource {
     const step3 = step2.split(' in ')
     let step4
 
-    console.log(step3)
+    // console.log(step3)
     if (step3.length > 1) {
       photoDetails.location = step3[0]
       step4 = step3[1]
@@ -81,7 +81,9 @@ class PhotoSource {
   }
 
   getLocationsByProp(photos) {
-    return photos.reduce((locationsByProp, photo) => {
+    const city_state_map = {}
+
+    const locationsByProp = photos.reduce((locationsByProp, photo) => {
       const photoDetails = this.getLocation(photo)
 
       if (photoDetails.topic) {
@@ -91,11 +93,20 @@ class PhotoSource {
         locationsByProp.locations.push(photoDetails)
       }
 
-      locationsByProp.city_state.push(photoDetails)
+      if (!city_state_map.hasOwnProperty(photoDetails.city_state)) {
+        city_state_map[photoDetails.city_state] = []
+      }
+      city_state_map[photoDetails.city_state].push(photoDetails)
+
       locationsByProp.all.push(photoDetails)
 
       return locationsByProp
     }, { topics: [], locations: [], city_state: [], all: [] })
+
+    // Sort by the city names, return an array items for each city
+    locationsByProp.city_state = Object.keys(city_state_map).sort().map(city_state => city_state_map[city_state])
+
+    return locationsByProp
   }
 
 }
