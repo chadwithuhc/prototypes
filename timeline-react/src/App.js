@@ -80,6 +80,12 @@ class App extends Component {
     })
   }
 
+  updatePost = (updatedPost) => {
+    Entry.update(updatedPost.id, updatedPost).then(updatedEntry => {
+      this.closeMoodChanger()
+    })
+  }
+
   chooseMood = (mood) => {
     this.setState({
       newEntry: {
@@ -103,6 +109,23 @@ class App extends Component {
     return moment(timestamp, 'x').calendar().replace(` at `, `\n`)
   }
 
+  launchMoodChanger(entry) {
+    this.setState({
+      moodChangingOnId: entry.id
+    })
+  }
+
+  closeMoodChanger() {
+    this.setState({
+      moodChangingOnId: null
+    })
+  }
+
+  updateMood = (entry, mood) => {
+    entry.mood = mood.name
+    this.updatePost(entry)
+  }
+
   render() {
     return (
       <section className="timeline">
@@ -124,14 +147,21 @@ class App extends Component {
         </article>
 
         {this.state.entries.map((entry) => {
+          let moodChanger = null
+
+          if (this.state.moodChangingOnId && this.state.moodChangingOnId === entry.id) {
+            moodChanger = <MoodPicker onClick={(mood) => this.updateMood(entry, mood)} value={entry.mood}></MoodPicker>
+          }
+
           return (
             <article key={entry.id} className="timeline-item">
 
               <time className="timeline-item__time">{this.getTime(entry)}</time>
-              <a className="timeline-item__mood">
+              <a className="timeline-item__mood" onDoubleClick={() => this.launchMoodChanger(entry)}>
                 <MoodIcon name={entry.mood} />
               </a>
               <section className="timeline-item__content">
+                {moodChanger}
                 {entry.tags.map(tag => {
                   return (
                     <a href="" key={tag} className="timeline-item__tag">{tag}</a>
