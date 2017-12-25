@@ -108,7 +108,12 @@ class App extends Component {
     return moment(timestamp, 'x').calendar().replace(` at `, `\n`)
   }
 
-  launchMoodChanger(entry) {
+  toggleMoodChanger(entry) {
+    if (this.state.moodChangingOnId) {
+      this.closeMoodChanger()
+      return
+    }
+
     this.setState({
       moodChangingOnId: entry.id
     })
@@ -201,7 +206,7 @@ class App extends Component {
             <article key={entry.id} className="timeline-item">
 
               <time className="timeline-item__time">{this.getTime(entry)}</time>
-              <a className="timeline-item__mood" onDoubleClick={() => this.launchMoodChanger(entry)}>
+              <a className="timeline-item__mood" onDoubleClick={() => this.toggleMoodChanger(entry)}>
                 <MoodIcon name={entry.mood} />
               </a>
               <section className="timeline-item__content">

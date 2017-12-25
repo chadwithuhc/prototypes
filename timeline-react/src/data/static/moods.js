@@ -19,6 +19,7 @@ const moods = {
     { name: `tired`, emoji: `😴` },
     { name: `sarcastic`, emoji: `😏` },
     { name: `smart`, emoji: `🤓` },
+    { name: `thinking`, emoji: `🤔` },
     { name: `happy`, emoji: `😌` },
     { name: `elated`, emoji: `🤗` },
     { name: `love`, emoji: `😍` },
