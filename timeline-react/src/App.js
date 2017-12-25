@@ -5,6 +5,7 @@ import Entry from './data/entry'
 import MoodPicker from './MoodPicker'
 import MoodIcon from './MoodIcon'
 import TagInput from './TagInput'
+import TagChanger from './TagChanger'
 import moment from 'moment'
 import moods from './data/static/moods'
 
@@ -55,7 +56,7 @@ class App extends Component {
 
   delete(e, entry) {
     e.preventDefault()
-    if (window.confirm(`Are you sure?`)) {
+    if (window.confirm(`This will delete the post`)) {
       Entry.destroy(entry.id)
     }
   }
@@ -81,9 +82,7 @@ class App extends Component {
   }
 
   updatePost = (updatedPost) => {
-    Entry.update(updatedPost.id, updatedPost).then(updatedEntry => {
-      this.closeMoodChanger()
-    })
+    return Entry.update(updatedPost.id, updatedPost)
   }
 
   chooseMood = (mood) => {
@@ -123,7 +122,47 @@ class App extends Component {
 
   updateMood = (entry, mood) => {
     entry.mood = mood.name
-    this.updatePost(entry)
+    this.updatePost(entry).then(x => {
+      this.closeMoodChanger()
+    })
+  }
+
+  launchTagChanger(entry, tag, i) {
+    this.setState({
+      tagChanging: {
+        entry,
+        tag,
+        i
+      }
+    })
+  }
+
+  closeTagChanger() {
+    this.setState({
+      tagChanging: null
+    })
+  }
+
+  previewUpdateTags(tags, tagsRaw) {
+    // Nothing for now, thanks
+    // this.setState({
+    //   tagChanging: {
+    //     ...this.state.tagChanging,
+    //     entry: {
+    //       ...this.state.tagChanging.entry,
+    //       tags,
+    //       tagsRaw
+    //     }
+    //   }
+    // })
+  }
+
+  updateTags = (entry, tags, tagsRaw) => {
+    entry.tags = tags
+    entry.tagsRaw = tagsRaw
+    this.updatePost(entry).then(x => {
+      this.closeTagChanger()
+    })
   }
 
   render() {
@@ -148,9 +187,14 @@ class App extends Component {
 
         {this.state.entries.map((entry) => {
           let moodChanger = null
+          let tagChanger = null
 
           if (this.state.moodChangingOnId && this.state.moodChangingOnId === entry.id) {
             moodChanger = <MoodPicker onClick={(mood) => this.updateMood(entry, mood)} value={entry.mood}></MoodPicker>
+          }
+
+          if (!!this.state.tagChanging && this.state.tagChanging.entry.id === entry.id) {
+            tagChanger = <TagChanger {...this.state.tagChanging} onChange={(tags, rawTags) => this.previewUpdateTags(tags, rawTags)} onSave={(tags, tagsRaw) => this.updateTags(entry, tags, tagsRaw)} />
           }
 
           return (
@@ -162,12 +206,13 @@ class App extends Component {
               </a>
               <section className="timeline-item__content">
                 {moodChanger}
-                {entry.tags.map(tag => {
+                {!tagChanger && entry.tags.map((tag, i) => {
                   return (
-                    <a href="" key={tag} className="timeline-item__tag">{tag}</a>
+                    <button key={tag} className="timeline-item__tag button" onDoubleClick={(e) => this.launchTagChanger(entry, tag, i)}>{tag}</button>
                   )
                 })}
-                <a href="" className="timeline-item__tag" onClick={(e) => this.delete(e, entry)}>X</a>
+                {tagChanger}
+                <button className="timeline-item__tag button button--delete" onClick={(e) => this.delete(e, entry)}> <div className="fa fa-times"></div></button>
                 <p className="timeline-item__location">{entry.location}</p>
                 <p className="timeline-item__description">
                   {entry.description}
