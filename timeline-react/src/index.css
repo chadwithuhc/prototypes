@@ -35,6 +35,12 @@
     background-color: transparent !important;
     border-color: lightpink;
     color: lightpink !important; }
+  .button--cancel {
+    float: left;
+    background-color: transparent !important;
+    border-color: lightgrey;
+    color: black !important;
+    margin: 1em 0 1em auto; }
 
 .timeline:before {
   content: '';

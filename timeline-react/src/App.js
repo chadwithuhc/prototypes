@@ -199,7 +199,7 @@ class App extends Component {
           }
 
           if (!!this.state.tagChanging && this.state.tagChanging.entry.id === entry.id) {
-            tagChanger = <TagChanger {...this.state.tagChanging} onChange={(tags, rawTags) => this.previewUpdateTags(tags, rawTags)} onSave={(tags, tagsRaw) => this.updateTags(entry, tags, tagsRaw)} />
+            tagChanger = <TagChanger {...this.state.tagChanging} onChange={(tags, rawTags) => this.previewUpdateTags(tags, rawTags)} onSave={(tags, tagsRaw) => this.updateTags(entry, tags, tagsRaw)} onCancel={() => this.closeTagChanger()} />
           }
 
           return (

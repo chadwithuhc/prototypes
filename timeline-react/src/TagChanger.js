@@ -33,10 +33,27 @@ class TagChanger extends React.Component {
     }
   }
 
-  onEnter = (e) => {
+  onKeyPress = (e) => {
+    // Enter
     if (e.keyCode === 13 || e.which === 13) {
       e.preventDefault()
       this.refs.saveBtn.click()
+      return
+    }
+  }
+
+  onKeyUp = (e) => {
+    // Esc (only works on keyUp)
+    if (e.keyCode === 27 || e.which === 27) {
+      e.preventDefault()
+      this.onCancel()
+      return
+    }
+  }
+
+  onCancel = (e) => {
+    if (typeof this.props.onCancel === `function`) {
+      this.props.onCancel()
     }
   }
 
@@ -73,7 +90,8 @@ class TagChanger extends React.Component {
           )
         })}
         <h2 className="section-title">Tags</h2>
-        <textarea ref="input" onChange={this.onChange} className="full-input" defaultValue={entry.tagsRaw} onFocus={this.onInputFocus} onKeyPress={this.onEnter}></textarea>
+        <textarea ref="input" onChange={this.onChange} className="full-input" defaultValue={entry.tagsRaw} onFocus={this.onInputFocus} onKeyUp={this.onKeyUp} onKeyPress={this.onKeyPress}></textarea>
+        <button type="button" className="button button--cancel" onClick={this.onCancel}>Cancel</button>
         <button ref="saveBtn" type="submit" className="button button--submit">SAVE</button>
       </form>
     )
@@ -86,7 +104,8 @@ TagChanger.defaultProps = {
   tag: ``,
   i: -1,
   onChange: null,
-  onSave: null
+  onSave: null,
+  onCancel: null
 }
 
 export default TagChanger
