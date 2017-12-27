@@ -206,14 +206,14 @@ class App extends Component {
             <article key={entry.id} className="timeline-item">
 
               <time className="timeline-item__time">{this.getTime(entry)}</time>
-              <a className="timeline-item__mood" onDoubleClick={() => this.toggleMoodChanger(entry)}>
+              <a className="timeline-item__mood" onDoubleClick={() => this.toggleMoodChanger(entry)} onTouchStart={() => this.toggleMoodChanger(entry)}>
                 <MoodIcon name={entry.mood} />
               </a>
               <section className="timeline-item__content">
                 {moodChanger}
                 {!tagChanger && entry.tags.map((tag, i) => {
                   return (
-                    <button key={tag} className="timeline-item__tag button" onDoubleClick={(e) => this.launchTagChanger(entry, tag, i)}>{tag}</button>
+                    <button key={tag} className="timeline-item__tag button" onDoubleClick={(e) => this.launchTagChanger(entry, tag, i)} onTouchStart={(e) => this.launchTagChanger(entry, tag, i)}>{tag}</button>
                   )
                 })}
                 {tagChanger}
