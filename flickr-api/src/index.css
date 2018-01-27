@@ -3,3 +3,24 @@ body {
   padding: 0;
   font-family: sans-serif;
 }
+
+
+.collage {
+  display: flex;
+  flex-wrap: wrap;
+  font-size: 1em;
+  /* background: gold; */
+}
+.collage img {
+  flex: 0 0 auto;
+  margin: 1em;
+  /* width: 4em;
+  height: 4em; */
+}
+/* .collage img:nth-child(4n) { sunsets
+  margin-left: 1em;
+  margin-right: 1em;
+} */
+.collage img:nth-child(odd) {
+  /* margin-left: 1em; */
+}

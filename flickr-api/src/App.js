@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
+import { BrowserRouter as Router, Route } from 'react-router-dom'
+import ColoradoCollage from './projects/ColoradoCollage/index'
 
 import PhotoSource from './PhotoSource'
 
@@ -46,10 +48,15 @@ class App extends Component {
 
     return (
       <div className="App">
+        <Router>
+          <div>
+            <Route path="/collage" component={ColoradoCollage} />
+          </div>
+        </Router>
         {this.state.photosets.map(photoset => {
           return <p key={photoset.id}>{photoset.title._content}: {photoset.id}</p>
         })}
-        <h2>
+        {/* <h2>
           Topics: {this.state.locationsByProp.topics.length} |
           Locations: {this.state.locationsByProp.locations.length} |
           Cities: {this.state.locationsByProp.city_state.length} |
@@ -59,8 +66,8 @@ class App extends Component {
           return <h2 key={location[0].city_state}>{location[0].city_state}</h2>
         })}
         {this.state.photos.reverse().map(photo => {
-          return <img key={photo} src={photo} />
-        })}
+          return <img key={photo} src={photo} alt={photo.title} />
+        })} */}
       </div>
     );
   }
