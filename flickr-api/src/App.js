@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 import { BrowserRouter as Router, Route } from 'react-router-dom'
 import ColoradoCollage from './projects/ColoradoCollage/index'
+import SinglePage from './projects/SinglePage'
 
 import PhotoSource from './PhotoSource'
 
@@ -51,11 +52,12 @@ class App extends Component {
         <Router>
           <div>
             <Route path="/collage" component={ColoradoCollage} />
+            <Route path="/single" component={SinglePage} />
           </div>
         </Router>
-        {this.state.photosets.map(photoset => {
+        {/* {this.state.photosets.map(photoset => {
           return <p key={photoset.id}>{photoset.title._content}: {photoset.id}</p>
-        })}
+        })} */}
         {/* <h2>
           Topics: {this.state.locationsByProp.topics.length} |
           Locations: {this.state.locationsByProp.locations.length} |

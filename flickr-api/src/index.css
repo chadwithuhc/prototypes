@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css?family=Amatic+SC|Berkshire+Swash|Neucha|Yellowtail|Leckerli+One');
+
 body {
   margin: 0;
   padding: 0;
@@ -23,4 +25,99 @@ body {
 } */
 .collage img:nth-child(odd) {
   /* margin-left: 1em; */
+}
+
+
+/* .single {
+  width: 100vw;
+  height: 100vh;
+}
+.single .poster {
+  position: absolute;
+  top: 10%;
+  left: 0;
+} */
+
+.single header {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+.single img {
+  flex: 0 0 auto;
+  /* opacity: 0.5; */
+}
+.single .poster {
+  /* opacity: 1; */
+}
+
+.poster-text {
+  position: absolute;
+  top: 16%;
+  left: 491px;
+  padding: 1em;
+  color: white;
+  text-align: left;
+  font-size: 3em;
+  line-height: 0.8em;
+  text-shadow: 5px 0px 10px #000;
+  font-family: 'Amatic SC', cursive;
+}
+
+.poster-text span {
+  font-size: 0.5em;
+  font-style: italic;
+}
+
+.poster-text2 {
+  position: absolute;
+  top: 112%;
+  left: 0;
+  padding: 1em;
+  color: white;
+  text-align: left;
+  font-size: 2em;
+  line-height: 0.8em;
+  text-shadow: 5px 0px 10px #000;
+  font-family: 'Berkshire Swash', cursive;
+}
+
+.poster-text2:before, .poster-text2:after {
+  content: ' ○ ';
+}
+
+.poster-text2 span {
+  font-size: 0.5em;
+  font-style: italic;
+}
+
+
+
+.poster-text3 {
+  position: absolute;
+  top: 167%;
+  left: 63%;
+  padding: 1em;
+  color: peachpuff;
+  text-align: left;
+  font-size: 1.2em;
+  line-height: 0.8em;
+  text-shadow: 5px 0px 10px #000;
+  font-family: 'Leckerli One', cursive;
+  text-align: center;
+}
+
+.poster-text3 span {
+  font-size: 0.5em;
+  font-style: italic;
+}
+.poster-text3 span:before {
+  content: '';
+  display: block;
+}
+.poster-text3 span:last-child {
+
+}
+.poster-text3 span:last-child:before {
+
 }
