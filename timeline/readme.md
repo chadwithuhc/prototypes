@@ -2,6 +2,8 @@
 
 > A timeline style list of postings with mood, location, and tags.
 
+[Demo](https://chadwithuhc.github.io/prototypes/timeline/)
+
 Goals:
 
 - [ ] Show me my mood over time

@@ -1,5 +1,9 @@
 # Firebase Login App
 
+> A sample React app using Firebase AuthUI and js-data
+
+No live demo. Feel free to look around [le source](https://github.com/chadwithuhc/prototypes/tree/master/firebase-login)
+
 ## To connect to Firebase
 
 
