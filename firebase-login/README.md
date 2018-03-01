@@ -10,6 +10,7 @@ No live demo. Feel free to look around [le source](https://github.com/chadwithuh
 ### Create local app and add keys
 - `create-react-app app-name`
 - create `.env` with following contents
+
 ```
 REACT_APP_FIREBASE_API_KEY=
 REACT_APP_FIREBASE_AUTH_DOMAIN=
@@ -18,6 +19,7 @@ REACT_APP_FIREBASE_PROJECT_ID=
 REACT_APP_FIREBASE_STORAGE_BUCKET=
 REACT_APP_FIREBASE_MESSAGING_SENDER_ID=
 ```
+
 - create `.env.production` with same or new keys
 
 
@@ -34,6 +36,7 @@ REACT_APP_FIREBASE_MESSAGING_SENDER_ID=
 - create `src/data` folder
 - create `src/data/static` folder
 - create `src/data/store.js` file with
+
 ```
 import { DataStore } from 'js-data'
 // import { LocalStorageAdapter } from 'js-data-localstorage'
@@ -56,6 +59,7 @@ export default store
 ```
 
 - create `src/data/modelname.js` with contents
+
 ```
 import store from './store'
 
@@ -72,6 +76,7 @@ export default store.defineMapper('modelname')
 - Enable Google auth in firebase
 - Add firebase UI https://github.com/firebase/FirebaseUI-Web#installation
 - Update firebase database rules
+
 ```
 {
   "rules": {
@@ -84,4 +89,7 @@ export default store.defineMapper('modelname')
   }
 }
 ```
+
+### Next
+
 - TRY https://stackoverflow.com/questions/30910704/how-do-i-link-each-user-to-their-data-in-firebase

@@ -12,7 +12,7 @@ Built by [@chadwithuhc](https://github.com/chadwithuhc)
 
 # Technologies
 
+- [React Router w/ State](./react-router-with-state/)
 - [Firebase Login](./firebase-login/)
 - [Flickr API](./flickr-api/)
-- [React Router w/ State](./react-router-with-state/)
 - [Tumblr API](./tumblr-api/)
