@@ -6,6 +6,7 @@ Built by [@chadwithuhc](https://github.com/chadwithuhc)
 
 # UI/UX Concepts
 
+- [Heavy Scroller](./heavy-scroller/)
 - [Are You Sure?](./are-you-sure/)
 - [Timeline](./timeline/)
 - [Task List](./task-list/)
