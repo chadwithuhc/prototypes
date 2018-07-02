@@ -1,18 +1,27 @@
 <template>
-  <aside @mousemove.capture="bubble">
-    <ul>
-      <li v-for="(item, i) in items" :key="i" :style="genFontSize(i)"><a href="#" :data-index="i">{{item}}</a></li>
-    </ul>
-  </aside>
+  <main>
+    <BubbleHover :items="frameworkNames" :settings="verticalSettings" />
+    <BubbleHover :items="emojis" />
+  </main>
 </template>
 
 <script>
+import BubbleHover from './components/BubbleHover'
 export default {
-  name: 'bubble-hover',
+  name: 'home',
+  components: {
+    BubbleHover
+  },
   data: () => ({
-    target: 6,
-    percent: 0,
-    items: [
+    emojis: [
+      '🤔',
+      '😘',
+      '😭',
+      '😻',
+      '😳',
+      '🤓'
+    ],
+    frameworkNames: [
       'React',
       'Vue.js',
       'jQuery',
@@ -21,67 +30,15 @@ export default {
       'Angular',
       'Backbone',
     ],
-    settings: {
+    verticalSettings: {
       fontSizeMax: 2,
       fontSizeBase: 0.7,
       opacityMax: 1,
       opacityBase: 0,
-      multiplier: 1.5
+      multiplier: 1.5,
+      vertical: true
     }
-  }),
-  mounted() {
-  },
-  methods: {
-    genFontSize(i) {
-      const {
-        fontSizeMax,
-        fontSizeBase,
-        opacityMax,
-        opacityBase,
-        multiplier
-      } = this.settings
-
-      const itemHeight = (1 / this.items.length)
-      const itemPercent = ((itemHeight * i) - Math.floor(itemHeight / 2)) * 100
-      const start = Math.round((1 / this.items.length) * i * 100)
-      const end = Math.round(start + (1 / this.items.length) * 100)
-
-      if (this.percent >= start && this.percent <= end) {
-        this.target = i
-      }
-
-      const distance = Math.abs(this.percent - itemPercent)
-
-      const fontSizeAdjustment = (fontSizeMax * (distance * multiplier) / 100).toFixed(2)
-      const opacityAdjustment = (opacityMax * (distance * multiplier) / 100).toFixed(2)
-
-      const adjustedFontSize = fontSizeMax - fontSizeAdjustment
-      const adjustedOpacity = opacityMax - opacityAdjustment
-
-      return {
-        fontSize: `${adjustedFontSize < fontSizeBase ? fontSizeBase : adjustedFontSize}em`,
-        opacity: `${adjustedOpacity < opacityBase ? opacityBase : adjustedOpacity}`
-      }
-    },
-    bubble(e) {
-      const $target = e.target
-
-      // const x = e.pageX - this.$el.offsetLeft
-      const y = e.pageY - this.$el.offsetTop
-      const h = this.$el.offsetHeight
-      const percent = Math.round((y / h) * 100)
-      // console.log(h, y, percent)
-
-      this.percent = percent
-
-      // windowSize
-      // aside offsetY, clientY
-
-       if ($target.nodeName === 'A') {
-         this.target = +$target.dataset.index
-       }
-    }
-  }
+  })
 }
 </script>
 
@@ -95,24 +52,18 @@ body {
   margin: 0;
 }
 
-aside {
-  text-align: right;
-  height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: flex-end;
+/* demo styles */
+.vertical {
+  height: 90vh;
 }
-
-ul {
-  list-style: none;
-  padding: 1em;
+.horizontal {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100vw;
 }
 
 a {
-  color: #ddd;
-  text-decoration: none;
-  border-bottom: solid .2em #555;
-  line-height: 0.8em;
-  display: inline-block;
+  // border-bottom: solid .2em #555;
 }
 </style>

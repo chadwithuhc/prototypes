@@ -1,3 +1,4 @@
 module.exports = {
-  baseUrl: '/prototypes/heavy-scroller/dist/'
+  // FOR DEPLOYMENT ONLY
+  // baseUrl: '/prototypes/heavy-scroller/dist/'
 }
