@@ -125,6 +125,10 @@ class PhotoSource {
     return locationsByProp
   }
 
+  getPageURL(photo) {
+    return `https://www.flickr.com/photos/chadwithuhc/${photo.id}`
+  }
+
 }
 
 export default new PhotoSource(process.env.REACT_APP_API_KEY)
