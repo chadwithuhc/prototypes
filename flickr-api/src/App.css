@@ -1,28 +1,28 @@
-.App {
-  text-align: center;
+@import url('https://fonts.googleapis.com/css?family=Abril+Fatface|Dosis');
+
+body {
+  font-family: 'Abril Fatface', cursive;
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 80px;
+.flex {
+  display: flex;
+}
+.flex > * {
+  min-width: 20%;
+  padding: 1em;
 }
 
-.App-header {
-  background-color: #222;
-  height: 150px;
-  padding: 20px;
-  color: white;
+.collage-header {
+  font-size: 1.6em;
+}
+.locations {
+  font-family: 'Dosis', sans-serif;
+  font-size: 0.7em;
+  padding-top: 4em;
 }
 
-.App-title {
-  font-size: 1.5em;
-}
-
-.App-intro {
-  font-size: large;
-}
-
-@keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+.total {
+  font-size: 1.4em;
+  color: firebrick;
+  letter-spacing: 0.02em;
 }
