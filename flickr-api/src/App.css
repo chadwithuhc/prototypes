@@ -2,6 +2,7 @@
 
 body {
   font-family: 'Abril Fatface', cursive;
+  margin: 0;
 }
 
 .flex {
@@ -12,13 +13,24 @@ body {
   padding: 1em;
 }
 
+.collage {
+  display: block;
+  max-height: 100vh;
+  overflow: scroll;
+}
 .collage-header {
   font-size: 1.6em;
 }
 .locations {
   font-family: 'Dosis', sans-serif;
-  font-size: 0.7em;
-  padding-top: 4em;
+  font-size: 1.4em;
+  margin-top: 1em;
+  max-height: 90vh;
+  overflow: scroll;
+}
+
+.locations a {
+  display: block;
 }
 
 .total {

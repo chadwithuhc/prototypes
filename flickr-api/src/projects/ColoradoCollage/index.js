@@ -19,11 +19,22 @@ class ColoradoCollage extends React.Component {
       const locations = PhotoSource.getLocations(photos)
 
       this.setState({
-        photos: photos.reverse().map(photo => PhotoSource.getPhotoUrl(photo)),
+        allPhotos: photos.reverse(),
+        photos: photos.reverse(),
         locations,
+        photosWithData: photos.reverse().map(photo => {
+          photo.info = PhotoSource.getLocation(photo)
+          return photo
+        }),
         locationsByProp: PhotoSource.getLocationsByProp(photos)
       })
 
+    })
+  }
+
+  filterPhotos = ({ field, value }) => {
+    return this.setState({
+      photos: this.state.photosWithData.filter(photo => photo.info[field] === value)
     })
   }
 
@@ -51,11 +62,12 @@ class ColoradoCollage extends React.Component {
         </section> */}
         <section className="locations">
           {this.state.locationsByProp.city_state.map(location => {
-            return <h2 key={location[0].city_state}>{location[0].city_state}</h2>
+            return <a onClick={() => this.filterPhotos({ field: 'city_state', value: location[0].city_state })} key={location[0].city_state}>{location[0].city_state}</a>
           })}
         </section>
         <main className="collage">
           {this.state.photos.map(photo => {
+            photo = PhotoSource.getPhotoUrl(photo)
             return <img key={photo} src={photo} alt={photo} />
           })}
         </main>
