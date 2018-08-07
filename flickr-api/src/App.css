@@ -38,3 +38,21 @@ body {
   color: firebrick;
   letter-spacing: 0.02em;
 }
+
+.active-category {
+  position: relative;
+}
+.active-category:after {
+  top: 0.6em;
+	left: -1em;
+	border: solid transparent;
+	content: " ";
+	height: 0;
+	width: 0;
+	position: absolute;
+	pointer-events: none;
+	border-color: rgba(0, 0, 0, 0);
+	border-left-color: black;
+	border-width: 0.8em;
+	margin-top: -0.8em;
+}

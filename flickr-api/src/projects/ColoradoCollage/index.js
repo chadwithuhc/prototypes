@@ -52,7 +52,7 @@ class ColoradoCollage extends React.Component {
             // ['all', 'All']
           ].map(item => {
             return (
-              <a onClick={() => this.setCategory(item[0])} key={item[0]}>
+              <a onClick={() => this.setCategory(item[0])} key={item[0]} className={this.state.category===item[0]?'active-category':''}>
                 <span className="total">{this.state.locationsByProp[item[0]].length}</span> {item[1]}<br/>
               </a>
             )
