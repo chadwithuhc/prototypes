@@ -11,6 +11,10 @@ Built by [@chadwithuhc](https://github.com/chadwithuhc)
 - [Are You Sure?](./are-you-sure/)
 - [Timeline](./timeline/)
 
+# Organizational
+
+- [Photo Collage](./flickr-api/)
+
 # Technologies
 
 - [React Router w/ State](./react-router-with-state/)

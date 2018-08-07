@@ -2,6 +2,7 @@
   "name": "flickr-api",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://chadwithuhc.github.io/prototypes/flickr-api/build/",
   "dependencies": {
     "js-data": "^3.0.1",
     "js-data-firebase": "^3.0.0",
