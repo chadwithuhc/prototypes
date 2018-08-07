@@ -70,7 +70,13 @@ class PhotoSource {
 
     // console.log(step3)
     if (step3.length > 1) {
-      photoDetails.location = step3[0]
+      if (!photoDetails.topic) {
+        photoDetails.topic = step3[0]
+      }
+      else {
+        photoDetails.location = step3[0]
+      }
+
       step4 = step3[1]
     }
     else {
@@ -96,23 +102,34 @@ class PhotoSource {
     return photos.map(this.getLocation)
   }
 
+  populateLocations(photos) {
+    return photos.map(photo => {
+      photo.info = this.getLocation(photo)
+      return photo
+    })
+  }
+
   getLocationsByProp(photos) {
-    const city_state_map = {}
+    const topic_set = new Set()
+    const location_set = new Set()
+    const city_state_set = new Set()
 
     const locationsByProp = photos.reduce((locationsByProp, photo) => {
       const photoDetails = this.getLocation(photo)
 
-      if (photoDetails.topic) {
-        locationsByProp.topics.push(photoDetails)
-      }
-      if (photoDetails.location) {
-        locationsByProp.locations.push(photoDetails)
-      }
+      // if (photoDetails.topic) {
+      //   locationsByProp.topics.push(photoDetails)
+      // }
+      topic_set.add(photoDetails.topic)
+      // if (photoDetails.location) {
+      //   locationsByProp.locations.push(photoDetails)
+      // }
+      location_set.add(photoDetails.location)
 
-      if (!city_state_map.hasOwnProperty(photoDetails.city_state)) {
-        city_state_map[photoDetails.city_state] = []
-      }
-      city_state_map[photoDetails.city_state].push(photoDetails)
+      // if (!city_state_set.contains(photoDetails.city_state)) {
+      //   city_state_set[photoDetails.city_state] = new Set()
+      // }
+      city_state_set.add(photoDetails.city_state)
 
       locationsByProp.all.push(photoDetails)
 
@@ -120,9 +137,14 @@ class PhotoSource {
     }, { topics: [], locations: [], city_state: [], all: [] })
 
     // Sort by the city names, return an array items for each city
-    locationsByProp.city_state = Object.keys(city_state_map).sort().map(city_state => city_state_map[city_state])
+    // locationsByProp.city_state = Object.keys(city_state_map).sort().map(city_state => city_state_map[city_state])
 
-    return locationsByProp
+    return {
+      location: Array.from(location_set).sort(),
+      topic: Array.from(topic_set).sort(),
+      city_state: Array.from(city_state_set).sort(),
+      all: locationsByProp.all
+    }
   }
 
   getPageURL(photo) {
