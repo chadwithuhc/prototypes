@@ -4,6 +4,28 @@ body {
   font-family: 'Abril Fatface', cursive;
   margin: 0;
 }
+.serif-font {
+  font-family: 'Dosis', sans-serif;
+}
+.buckets {
+  display: flex;
+  flex-wrap: wrap;
+}
+.buckets .photoset {
+  margin: 1em;
+}
+.photoset {
+  font-family: 'Dosis', sans-serif;
+  font-size: 2em;
+  line-height: 1em;
+  font-weight: normal;
+}
+.photoset a {
+  font-size: 0.5em;
+  color: #aaa;
+  display: block;
+  text-decoration: none;
+}
 
 .flex {
   display: flex;
@@ -33,6 +55,23 @@ body {
   display: block;
 }
 
+.small-collage {
+  display: flex;
+  flex-wrap: wrap;
+}
+.small-collage img {
+  margin: 0;
+}
+.small-collage a {
+  display: inline-block;
+  max-height: 150px;
+}
+
+.locked-scroll {
+  max-height: 100vh;
+  overflow: scroll;
+}
+
 .total {
   font-size: 1.4em;
   color: firebrick;
@@ -55,4 +94,9 @@ body {
 	border-left-color: black;
 	border-width: 0.8em;
 	margin-top: -0.8em;
+}
+
+
+.public-faces {
+
 }

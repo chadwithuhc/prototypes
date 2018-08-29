@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
 import './App.css';
-import { HashRouter as Router, Route } from 'react-router-dom'
+import { HashRouter as Router, Route, Link } from 'react-router-dom'
 import ColoradoCollage from './projects/ColoradoCollage/index'
+import Collage from './projects/Collage'
 import SinglePage from './projects/SinglePage'
+import PublicFaces from './projects/PublicFaces'
 
 import PhotoSource from './PhotoSource'
 
@@ -26,7 +28,7 @@ class App extends Component {
     PhotoSource.getPhotosets().then(photosets => {
       // console.log(photosets)
       this.setState({
-        photosets
+        photosets: photosets.sort(this.sortByTitle)
       })
 
       PhotoSource.getPhotosFromPhotoset(`72157682668038663`).then(photoset => {
@@ -44,6 +46,12 @@ class App extends Component {
     })
   }
 
+  sortByTitle(a, b) {
+    if (a.title._content.toLowerCase() > b.title._content.toLowerCase()) return 1
+    if (a.title._content.toLowerCase() < b.title._content.toLowerCase()) return -1
+    return 0
+  }
+
   render() {
     console.log(`Photos: ${this.state.photos.length}`, `Locations: ${this.state.locations.length}`)
 
@@ -51,13 +59,19 @@ class App extends Component {
       <div className="App">
         <Router>
           <div>
+            <Route path="/photoset/:photosetId" component={Collage} />
             <Route path="/collage" component={ColoradoCollage} />
+            <Route path="/public-faces" component={PublicFaces} />
             <Route path="/single" component={SinglePage} />
+            <Route path="/" exact component={() => (
+              <section className="buckets">
+                {this.state.photosets.map(photoset => {
+                  return <h2 key={photoset.id} className="photoset serif-font">{photoset.title._content} <Link to={`/photoset/${photoset.id}`}><small>{photoset.id} &rarr;</small></Link></h2>
+                })}
+              </section>
+            )} />
           </div>
         </Router>
-        {/* {this.state.photosets.map(photoset => {
-          return <p key={photoset.id}>{photoset.title._content}: {photoset.id}</p>
-        })} */}
         {/* <h2>
           Topics: {this.state.locationsByProp.topics.length} |
           Locations: {this.state.locationsByProp.locations.length} |
