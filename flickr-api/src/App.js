@@ -3,7 +3,7 @@ import './App.css';
 import { HashRouter as Router, Route, Link } from 'react-router-dom'
 import ColoradoCollage from './projects/ColoradoCollage/index'
 import Collage from './projects/Collage'
-import SinglePage from './projects/SinglePage'
+import Postcards from './projects/Postcards'
 import PublicFaces from './projects/PublicFaces'
 
 import PhotoSource from './PhotoSource'
@@ -62,7 +62,7 @@ class App extends Component {
             <Route path="/photoset/:photosetId" component={Collage} />
             <Route path="/collage" component={ColoradoCollage} />
             <Route path="/public-faces" component={PublicFaces} />
-            <Route path="/single" component={SinglePage} />
+            <Route path="/postcards" component={Postcards} />
             <Route path="/" exact component={() => (
               <section className="buckets">
                 {this.state.photosets.map(photoset => {

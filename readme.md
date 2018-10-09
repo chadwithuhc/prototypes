@@ -10,10 +10,7 @@ Built by [@chadwithuhc](https://github.com/chadwithuhc)
 - [Heavy Scroller](./heavy-scroller/)
 - [Are You Sure?](./are-you-sure/)
 - [Timeline](./timeline/)
-
-# Organizational
-
-- [Photo Collage](./flickr-api/)
+- [Photographic Layouts](./flickr-api/)
 
 # Technologies
 

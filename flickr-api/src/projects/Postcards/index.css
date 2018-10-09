@@ -1,0 +1,53 @@
+.postcards {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.postcard {
+  position: relative;
+  display: inline-flex;
+  margin: 3em;
+  flex-grow: 0;
+}
+
+
+.ridges .title {
+  position: absolute;
+  top: 24%;
+  right: 0;
+  padding: 1em;
+  color: white;
+  text-align: left;
+  font-size: 3em;
+  line-height: 0.8em;
+  text-shadow: 5px 0px 10px #000;
+  font-family: 'Amatic SC', cursive;
+}
+.ridges .title span {
+  font-size: 0.5em;
+  font-style: italic;
+}
+
+
+.editorial {
+
+}
+.editorial .title {
+  font-size: 1.5em;
+  background-color: white;
+  padding: 0.4em 0.7em;
+  position: absolute;
+  top: -0.2em;
+  left: 2em;
+}
+
+
+.proto .title {
+  font-size: 1.5em;
+  background-color: white;
+  padding: 0.4em 0.7em;
+  position: absolute;
+  top: -0.2em;
+  left: 2em;
+}
