@@ -1,3 +1,14 @@
+@import url('https://fonts.googleapis.com/css?family=Megrim|Monoton');
+
+/*
+  __FONTS__
+
+  # Cursive
+  'Sacramento'
+
+  'Monoton' - rino
+*/
+
 .postcards {
   display: flex;
   flex-direction: column;
@@ -6,14 +17,52 @@
 }
 .postcard {
   position: relative;
+  overflow: hidden;
   display: inline-flex;
   margin: 3em;
   flex-grow: 0;
 }
+.postcard .title {
+  position: absolute;
+}
+
+
+.proto .title {
+  color: white;
+  padding: 1em;
+}
+
+
+.retro .title {
+  font-family: 'Monoton', cursive;
+  font-size: 6.7em;
+  color: white;
+  opacity: 0.9;
+  line-height: 0.7em;
+  right: 0;
+  text-align: right;
+  text-shadow: 0.035em 0.035em 0 tomato;
+  padding: 0.3em 0.1em 0;
+  background-color: aqua;
+}
+.retro .title:before {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 100%;
+  width: 150%;
+  height: 0.2em;
+  background-color: aqua;
+}
+.retro .title small {
+  font-size: 0.35em;
+  text-transform: uppercase;
+  display: block;
+  text-shadow: none;
+}
 
 
 .ridges .title {
-  position: absolute;
   top: 24%;
   right: 0;
   padding: 1em;
@@ -37,17 +86,29 @@
   font-size: 1.5em;
   background-color: white;
   padding: 0.4em 0.7em;
-  position: absolute;
   top: -0.2em;
   left: 2em;
 }
 
 
-.proto .title {
-  font-size: 1.5em;
-  background-color: white;
-  padding: 0.4em 0.7em;
+.stoic:before {
+  content: '';
   position: absolute;
-  top: -0.2em;
-  left: 2em;
+  top: 1em;
+  left: 1em;
+  right: 1em;
+  bottom: 1em;
+  border: solid 1em white;
+}
+.stoic .title {
+  left: 0;
+  right: 0;
+  bottom: 0;
+  text-align: center;
+  font-size: 4em;
+  color: white;
+  font-family: 'Megrim', cursive;
+  padding: 0;
+  line-height: 3em;
+  text-shadow: 0 0 0.3em black, 0 0 0.3em black, 0 0 0.3em black, 3px 3px 3px burlywood, 3px 3px 3px burlywood;
 }

@@ -17,14 +17,19 @@ class Postcards extends React.Component {
           <figcaption className="title">Arapaho National Forest, CO</figcaption>
         </figure>
 
-        <figure className="postcard editorial">
-          <img src="https://farm5.staticflickr.com/4273/34484249943_f18c8d2627_c.jpg" width="800" height="600" alt="Road Curves at Moraine Park Valley in Rocky Mountain National Park, CO" />
-          <figcaption className="title">Rocky Mountain National Park, CO</figcaption>
+        <figure className="postcard stoic">
+          <img src="https://farm5.staticflickr.com/4281/35354764461_056c764755_c.jpg" width="800" height="426" alt="Moraine Park Valley in Rocky Mountain National Park, CO" />
+          <figcaption className="title">Moraine Park Valley</figcaption>
+        </figure>
+
+        <figure className="postcard retro">
+          <img src="https://farm5.staticflickr.com/4214/35495560005_b1475a49af_c.jpg" width="800" height="408" alt="Phantogram Crowds at RiNo in Denver, CO" />
+          <figcaption className="title">RiNo <small>Arts District</small></figcaption>
         </figure>
 
         <figure className="postcard proto">
-          <img src="https://farm5.staticflickr.com/4214/35495560005_b1475a49af_c.jpg" width="800" height="408" alt="Phantogram Crowds at RiNo in Denver, CO" />
-          <figcaption className="title">RiNo</figcaption>
+          <img src="https://farm5.staticflickr.com/4273/34484249943_f18c8d2627_c.jpg" width="800" height="600" alt="Road Curves at Moraine Park Valley in Rocky Mountain National Park, CO" />
+          <figcaption className="title">Rocky Mountain National Park, CO</figcaption>
         </figure>
 
         <figure className="postcard proto">
@@ -32,10 +37,7 @@ class Postcards extends React.Component {
           <figcaption className="title">Trail Ridge Road</figcaption>
         </figure>
 
-        <figure className="postcard proto">
-          <img src="https://farm5.staticflickr.com/4281/35354764461_056c764755_c.jpg" width="800" height="426" alt="Moraine Park Valley in Rocky Mountain National Park, CO" />
-          <figcaption className="title">Moraine Park Valley</figcaption>
-        </figure>
+
 
       </main>
     )
