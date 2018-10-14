@@ -80,7 +80,11 @@ class ColoradoCollage extends React.Component {
         </section> */}
         <main className="collage">
           {this.state.photos.map(photo => {
-            return <a href={PhotoSource.getPageURL(photo)} target="blank" rel="noreffer" title={photo.title} key={photo.id}><img src={PhotoSource.getPhotoUrl(photo)} alt={photo.title} /></a>
+            return <a href={PhotoSource.getPageURL(photo)} target="blank" rel="noreffer" title={photo.title} key={photo.id}><img
+              src={PhotoSource.getPhotoUrl(photo)}
+              alt={photo.title}
+              data-lg-src={PhotoSource.getPhotoUrl(photo, 'b')}
+            /></a>
           })}
         </main>
       </main>
