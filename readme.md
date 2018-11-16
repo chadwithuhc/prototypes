@@ -9,7 +9,7 @@ Built by [@chadwithuhc](https://github.com/chadwithuhc)
 - [T-shirt sizes](./t-shirt-sizes/)
 - [Heavy Scroller](./heavy-scroller/)
 - [Are You Sure?](./are-you-sure/)
-- [Timeline](./timeline/)
+- [Timeline](https://codepen.io/chadwithuhc/pen/pQRMgO)
 - [Photographic Layouts](./flickr-api/)
 
 # Technologies
