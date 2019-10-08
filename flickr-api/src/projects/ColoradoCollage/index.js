@@ -33,6 +33,7 @@ class ColoradoCollage extends React.Component {
 
   filterPhotos = (value) => {
     return this.setState({
+      filter: value,
       photos: this.state.allPhotos.filter(photo => photo.info[this.state.category] === value)
     })
   }
@@ -44,7 +45,8 @@ class ColoradoCollage extends React.Component {
   render() {
     return (
       <main className="flex">
-        <h2 className="collage-header">
+        <header className="collage-header">
+          <h1 className="collage-title">Colorado <span className="collage-subtitle">by jfdenver</span></h1>
           {[
             ['topic', 'Topics'],
             ['location', 'Locations'],
@@ -52,12 +54,12 @@ class ColoradoCollage extends React.Component {
             // ['all', 'All']
           ].map(item => {
             return (
-              <a onClick={() => this.setCategory(item[0])} key={item[0]} className={this.state.category===item[0]?'active-category':''}>
+              <button onClick={() => this.setCategory(item[0])} key={item[0]} className={'buttonless collage-filter-link ' + (this.state.category===item[0]?'active-category':'')}>
                 <span className="total">{this.state.locationsByProp[item[0]].length}</span> {item[1]}<br/>
-              </a>
+              </button>
             )
           })}
-        </h2>
+        </header>
         {/* <section>
           {this.state.photosets.map(photoset => {
             return <p key={photoset.id}>{photoset.title._content}: {photoset.id}</p>
@@ -65,7 +67,7 @@ class ColoradoCollage extends React.Component {
         </section> */}
         <section className="locations">
           {this.state.locationsByProp[this.state.category].map(filterValue => {
-            return <a onClick={() => this.filterPhotos(filterValue)} key={filterValue}>{filterValue}</a>
+            return <button className={`buttonless collage-filter-sublink ` + (this.state.filter===filterValue?'active-link':'')} onClick={() => this.filterPhotos(filterValue)} key={filterValue}>{filterValue}</button>
           })}
         </section>
         {/* <section className="locations">
@@ -78,7 +80,10 @@ class ColoradoCollage extends React.Component {
             return <a onClick={() => this.filterPhotos({ field: 'topic', value: location.topic })} key={location.topic}>{location.topic}</a>
           })}
         </section> */}
-        <main className="collage">
+        <section className="separator--lines" aria-hidden="true">
+          ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+        </section>
+        <section className="collage">
           {this.state.photos.map(photo => {
             return <a href={PhotoSource.getPageURL(photo)} target="blank" rel="noreffer" title={photo.title} key={photo.id}><img
               src={PhotoSource.getPhotoUrl(photo)}
@@ -86,7 +91,7 @@ class ColoradoCollage extends React.Component {
               data-lg-src={PhotoSource.getPhotoUrl(photo, 'b')}
             /></a>
           })}
-        </main>
+        </section>
       </main>
     )
   }

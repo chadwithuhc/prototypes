@@ -1,6 +1,8 @@
 import React from 'react'
 import './index.css'
 
+import umbrella from './svgs/umbrella.js'
+
 class Postcards extends React.Component {
 
   render() {
@@ -24,7 +26,7 @@ class Postcards extends React.Component {
 
         <figure className="postcard riverfront-retro">
           <img src="https://farm5.staticflickr.com/4159/34544333765_7f877a7b27_b.jpg" width={1024*.75} height={768*.75} alt="Spring at Riverfront Park in Denver, CO" />
-          <figcaption className="title">Riverfront Park</figcaption>
+          <figcaption className="title"><umbrella /> Riverfront Park</figcaption>
         </figure>
 
         <figure className="postcard retro">

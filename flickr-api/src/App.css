@@ -1,8 +1,18 @@
 @import url('https://fonts.googleapis.com/css?family=Abril+Fatface|Dosis');
 
 body {
-  font-family: 'Abril Fatface', cursive;
+  font-family: 'Abril Fatface', serif;
   margin: 0;
+}
+::-moz-selection { background: burlywood; }
+::selection { background: burlywood; }
+.buttonless {
+  background: none;
+  border: 0;
+  white-space: nowrap;
+}
+.buttonless:focus { /* hear me out ... */
+  outline: none;
 }
 .serif-font {
   font-family: 'Dosis', sans-serif;
@@ -32,16 +42,53 @@ body {
 }
 .flex > * {
   min-width: 20%;
-  padding: 1em;
+  padding: 0.5em;
+}
+
+.separator--lines {
+  transform: rotate(90deg);
+  height: 1em;
+  min-width: 1em;
+  width: 90vh;
+  cursor: default;
 }
 
 .collage {
   display: block;
   max-height: 100vh;
   overflow: scroll;
+  background-color: floralwhite;/* seashell floralwhite */
+}
+.collage img {
+  border-radius: 0.3em;
 }
 .collage-header {
   font-size: 1.6em;
+  padding: 1em;
+}
+.collage-title {
+  font-weight: 500;
+  line-height: 0.7em;
+}
+.collage-subtitle {
+  display: block;
+  font-family: 'Dosis', sans-serif;
+  font-size: 0.4em;
+  margin-left: 7em;
+  color: peru;
+  text-transform: uppercase;
+}
+.collage-filter-link {
+  display: block;
+  font-family: 'Abril Fatface', serif;
+  font-size: 1em;
+  cursor: pointer;
+}
+.collage-filter-sublink {
+  display: block;
+  font-family: 'Dosis', sans-serif;
+  font-size: 1em;
+  cursor: pointer;
 }
 .locations {
   font-family: 'Dosis', sans-serif;
@@ -49,10 +96,12 @@ body {
   margin-top: 1em;
   max-height: 90vh;
   overflow: scroll;
+  border-left: solid 0.2em black;
 }
 
 .locations a {
   display: block;
+  cursor: pointer;
 }
 
 .small-collage {
@@ -82,7 +131,7 @@ body {
   position: relative;
 }
 .active-category:after {
-  top: 0.6em;
+  top: 1em;
 	left: -1em;
 	border: solid transparent;
 	content: " ";
@@ -94,4 +143,22 @@ body {
 	border-left-color: black;
 	border-width: 0.8em;
 	margin-top: -0.8em;
+}
+
+.active-link {
+  position: relative;
+}
+.active-link:after {
+  top: 0.7em;
+	left: -0.5em;
+	border: solid transparent;
+	content: " ";
+	height: 0;
+	width: 0;
+	position: absolute;
+	pointer-events: none;
+	border-color: rgba(0, 0, 0, 0);
+	border-left-color: black;
+	border-width: 0.5em;
+	margin-top: -0.5em;
 }
