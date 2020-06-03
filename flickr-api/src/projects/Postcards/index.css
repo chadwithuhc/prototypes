@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css?family=Megrim|Monoton|Poiret+One|Srisakdi|Fredoka+One|Bungee+Inline');
+@import url('https://fonts.googleapis.com/css?family=Megrim|Monoton|Poiret+One|Srisakdi|Fredoka+One|Bungee+Inline|Bangers');
 
 /*
   __FONTS__
@@ -182,4 +182,26 @@
   top: -5rem;
   left: 7rem;
   color: whitesmoke;
+}
+
+
+.acapulco {
+  font-family: 'Bangers', cursive;
+  color: crimson;
+}
+.acapulco .title {
+  display: block;
+  width: 100%;
+  font-size: 6em;
+  text-align: center;
+  margin-top: 0.4em;
+  text-shadow: 3px 0 white, 6px 0 green;
+}
+.acapulco .icon {
+  display: inline-block;
+  font-size: 1.4em;
+  line-height: 1em;
+  vertical-align: middle;
+  margin-right: -0.2em;
+  text-shadow: none;/*3px 0 crimson, 6px 0 white, 9px 0 green;*/
 }
