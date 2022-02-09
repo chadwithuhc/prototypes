@@ -4,7 +4,7 @@
   "private": true,
   "homepage": "https://chadwithuhc.github.io/prototypes/flickr-api/build/",
   "dependencies": {
-    "js-data": "^3.0.1",
+    "js-data": "^3.0.11",
     "js-data-firebase": "^3.0.0",
     "js-data-http": "^3.0.0",
     "react": "^16.0.0",
